@@ -1,6 +1,7 @@
 package com.example.githubapis.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,6 +13,8 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
 
@@ -31,6 +34,16 @@ class SettingsActivity : AppCompatActivity() {
 
         switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             settingsViewModel.saveThemeSetting(isChecked)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
