@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubapis.R
 import com.example.githubapis.data.response.DetailUserResponse
 import com.example.githubapis.data.retrofit.ApiConfig
 import com.example.githubapis.database.FavoriteUser
