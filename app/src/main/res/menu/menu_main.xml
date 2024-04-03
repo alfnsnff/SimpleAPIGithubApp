@@ -8,7 +8,6 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/baseline_error_outline_24"
         android:title="@string/setting"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>

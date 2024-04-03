@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.CompoundButton
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,18 +21,26 @@ import com.example.githubapis.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel by viewModels<MainViewModel> {
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        ViewModelFactory.getInstance(application, pref)
+    }
+
+    private val settingsViewModel by viewModels<SettingsViewModel> {
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        ViewModelFactory.getInstance(application, pref)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val mainViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[MainViewModel::class.java]
+        settingsViewModel.getThemeSettings().observe(this) { isDarkModeActive ->
+            applyTheme(isDarkModeActive)
+        }
 
-        mainViewModel.users.observe(this) { users ->
+        viewModel.users.observe(this) { users ->
             setUsersData(users)
         }
 
@@ -39,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 .editText
                 .setOnEditorActionListener { _, _, _ ->
                     searchBar.setText(searchView.text)
-                    mainViewModel.findUsers(searchView.text.toString().trim())
+                    viewModel.findUsers(searchView.text.toString().trim())
                     searchView.hide()
                     false
                 }
@@ -50,14 +61,22 @@ class MainActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvReview.addItemDecoration(itemDecoration)
 
-        mainViewModel.isLoading.observe(this) {
+        viewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
-        mainViewModel.errorMessage.observe(this) {
+        viewModel.errorMessage.observe(this) {
             showErrorMessage(it)
         }
 
+    }
+
+    private fun applyTheme(isDarkModeActive: Boolean) {
+        if (isDarkModeActive) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     private fun setUsersData(response: GithubResponse) {
@@ -96,6 +115,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(moveIntent)
             }
             R.id.settings -> {
+                val moveIntent = Intent(this@MainActivity, SettingsActivity::class.java)
+                startActivity(moveIntent)
             }
         }
         return super.onOptionsItemSelected(item)

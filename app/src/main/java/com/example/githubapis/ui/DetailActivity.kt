@@ -20,7 +20,8 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
 
     private val viewModel by viewModels<DetailViewModel> {
-        ViewModelFactory.getInstance(application)
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        ViewModelFactory.getInstance(application, pref)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

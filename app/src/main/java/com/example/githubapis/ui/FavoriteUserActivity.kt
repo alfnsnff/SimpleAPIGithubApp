@@ -14,7 +14,8 @@ class FavoriteUserActivity : AppCompatActivity() {
     private lateinit var adapter: FavoriteUserAdapter // Use ReviewAdapter instead of FavoriteUserAdapter
 
     private val viewModel by viewModels<FavoriteUserViewModel>{
-        ViewModelFactory.getInstance(application)
+        val pref = SettingPreferences.getInstance(application.dataStore)
+        ViewModelFactory.getInstance(application, pref)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
