@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.detail
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,6 +12,9 @@ import com.example.githubapis.R
 import com.example.githubapis.data.response.DetailUserResponse
 import com.example.githubapis.database.FavoriteUser
 import com.example.githubapis.databinding.ActivityDetailBinding
+import com.example.githubapis.helper.ViewModelFactory
+import com.example.githubapis.ui.settings.SettingPreferences
+import com.example.githubapis.ui.settings.dataStore
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

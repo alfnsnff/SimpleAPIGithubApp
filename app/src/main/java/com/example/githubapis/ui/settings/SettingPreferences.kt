@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.settings
 
 import android.content.Context
 import androidx.datastore.core.DataStore

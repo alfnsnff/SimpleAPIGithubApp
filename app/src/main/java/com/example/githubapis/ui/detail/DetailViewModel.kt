@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.detail
 
 import android.app.Application
 import android.util.Log
@@ -24,7 +24,8 @@ class DetailViewModel(application: Application) : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
-    private val mFavoriteUserRepository: FavoriteUserRepository = FavoriteUserRepository(application)
+    private val mFavoriteUserRepository: FavoriteUserRepository =
+        FavoriteUserRepository(application)
 
     fun getFavoriteUserByUsername(username: String): LiveData<FavoriteUser> =
         mFavoriteUserRepository.getFavoriteUserByUsername(username)

@@ -1,21 +1,25 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.main
 
-import ReviewAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CompoundButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubapis.R
 import com.example.githubapis.data.response.GithubResponse
 import com.example.githubapis.databinding.ActivityMainBinding
+import com.example.githubapis.helper.ViewModelFactory
+import com.example.githubapis.ui.detail.DetailActivity
+import com.example.githubapis.ui.favoriteUser.FavoriteUserActivity
+import com.example.githubapis.ui.settings.SettingPreferences
+import com.example.githubapis.ui.settings.SettingsActivity
+import com.example.githubapis.ui.settings.SettingsViewModel
+import com.example.githubapis.ui.settings.dataStore
 
 
 class MainActivity : AppCompatActivity() {
@@ -114,6 +118,7 @@ class MainActivity : AppCompatActivity() {
                 val moveIntent = Intent(this@MainActivity, FavoriteUserActivity::class.java)
                 startActivity(moveIntent)
             }
+
             R.id.settings -> {
                 val moveIntent = Intent(this@MainActivity, SettingsActivity::class.java)
                 startActivity(moveIntent)

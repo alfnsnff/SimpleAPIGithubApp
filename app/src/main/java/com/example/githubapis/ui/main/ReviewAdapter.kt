@@ -1,3 +1,5 @@
+package com.example.githubapis.ui.main
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

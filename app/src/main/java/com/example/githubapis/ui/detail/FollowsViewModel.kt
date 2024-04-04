@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.detail
 
 import android.util.Log
 import androidx.lifecycle.LiveData

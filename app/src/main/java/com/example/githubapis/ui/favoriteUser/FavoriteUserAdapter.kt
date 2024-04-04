@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.favoriteUser
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,17 +18,22 @@ class FavoriteUserAdapter : RecyclerView.Adapter<FavoriteUserAdapter.FavUserView
         this.listNotes.addAll(listNotes)
         diffResult.dispatchUpdatesTo(this)
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavUserViewHolder{
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavUserViewHolder {
         val binding = ItemReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavUserViewHolder(binding)
     }
+
     override fun onBindViewHolder(holder: FavUserViewHolder, position: Int) {
         holder.bind(listNotes[position])
     }
+
     override fun getItemCount(): Int {
         return listNotes.size
     }
-    inner class FavUserViewHolder(private val binding: ItemReviewBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    inner class FavUserViewHolder(private val binding: ItemReviewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(favoriteUser: FavoriteUser) {
             with(binding) {
                 tvItem.text = favoriteUser.username

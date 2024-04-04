@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.favoriteUser
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,13 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubapis.databinding.ActivityFavoriteUserBinding
+import com.example.githubapis.helper.ViewModelFactory
+import com.example.githubapis.ui.settings.SettingPreferences
+import com.example.githubapis.ui.settings.dataStore
 
 class FavoriteUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoriteUserBinding
-    private lateinit var adapter: FavoriteUserAdapter // Use ReviewAdapter instead of FavoriteUserAdapter
+    private lateinit var adapter: FavoriteUserAdapter // Use com.example.githubapis.ui.main.ReviewAdapter instead of FavoriteUserAdapter
 
-    private val viewModel by viewModels<FavoriteUserViewModel>{
+    private val viewModel by viewModels<FavoriteUserViewModel> {
         val pref = SettingPreferences.getInstance(application.dataStore)
         ViewModelFactory.getInstance(application, pref)
     }
@@ -47,6 +50,7 @@ class FavoriteUserActivity : AppCompatActivity() {
                 finish()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

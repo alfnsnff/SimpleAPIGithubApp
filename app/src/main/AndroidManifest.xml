@@ -15,16 +15,16 @@
         android:theme="@style/Theme.GithubAPIS"
         tools:targetApi="31">
         <activity
-            android:name=".ui.SettingsActivity"
+            android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.FavoriteUserActivity"
+            android:name=".ui.favoriteUser.FavoriteUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.DetailActivity"
+            android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

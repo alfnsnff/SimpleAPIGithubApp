@@ -1,4 +1,4 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.settings
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.example.githubapis.R
+import com.example.githubapis.helper.ViewModelFactory
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingsActivity : AppCompatActivity() {
@@ -20,7 +21,8 @@ class SettingsActivity : AppCompatActivity() {
 
         val pref = SettingPreferences.getInstance(application.dataStore)
         val viewModelFactory = ViewModelFactory.getInstance(application, pref)
-        val settingsViewModel = ViewModelProvider(this, viewModelFactory)[SettingsViewModel::class.java]
+        val settingsViewModel =
+            ViewModelProvider(this, viewModelFactory)[SettingsViewModel::class.java]
 
         settingsViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
@@ -43,6 +45,7 @@ class SettingsActivity : AppCompatActivity() {
                 finish()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

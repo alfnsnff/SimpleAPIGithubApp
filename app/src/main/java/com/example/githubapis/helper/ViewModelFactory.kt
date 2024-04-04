@@ -1,17 +1,28 @@
-package com.example.githubapis.ui
+package com.example.githubapis.helper
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.githubapis.ui.detail.DetailViewModel
+import com.example.githubapis.ui.favoriteUser.FavoriteUserViewModel
+import com.example.githubapis.ui.main.MainViewModel
+import com.example.githubapis.ui.settings.SettingPreferences
+import com.example.githubapis.ui.settings.SettingsViewModel
 
-class ViewModelFactory private constructor(private val mApplication: Application, private val settingPreferences: SettingPreferences) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory private constructor(
+    private val mApplication: Application,
+    private val settingPreferences: SettingPreferences
+) : ViewModelProvider.NewInstanceFactory() {
 
     companion object {
         @Volatile
         var INSTANCE: ViewModelFactory? = null
 
         @JvmStatic
-        fun getInstance(application: Application, settingPreferences: SettingPreferences): ViewModelFactory {
+        fun getInstance(
+            application: Application,
+            settingPreferences: SettingPreferences
+        ): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
                     INSTANCE = ViewModelFactory(application, settingPreferences)

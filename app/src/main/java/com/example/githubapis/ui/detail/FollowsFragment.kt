@@ -1,6 +1,6 @@
-package com.example.githubapis.ui
+package com.example.githubapis.ui.detail
 
-import ReviewAdapter
+import com.example.githubapis.ui.main.ReviewAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
