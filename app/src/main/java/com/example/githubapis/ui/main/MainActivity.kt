@@ -8,23 +8,26 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubapis.R
 import com.example.githubapis.data.response.GithubResponse
 import com.example.githubapis.databinding.ActivityMainBinding
 import com.example.githubapis.helper.ViewModelFactory
-import com.example.githubapis.ui.detail.DetailActivity
-import com.example.githubapis.ui.favoriteUser.FavoriteUserActivity
 import com.example.githubapis.ui.settings.SettingPreferences
 import com.example.githubapis.ui.settings.SettingsActivity
 import com.example.githubapis.ui.settings.SettingsViewModel
 import com.example.githubapis.ui.settings.dataStore
+import com.example.githubapis.ui.detail.DetailActivity
+import com.example.githubapis.ui.favoriteUser.FavoriteUserActivity
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: UserAdapter
+
     private val viewModel by viewModels<MainViewModel> {
         val pref = SettingPreferences.getInstance(application.dataStore)
         ViewModelFactory.getInstance(application, pref)
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -72,8 +76,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.errorMessage.observe(this) {
             showErrorMessage(it)
         }
-
     }
+
 
     private fun applyTheme(isDarkModeActive: Boolean) {
         if (isDarkModeActive) {
@@ -84,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUsersData(response: GithubResponse) {
-        val adapter = ReviewAdapter()
+        adapter = UserAdapter()
         adapter.submitList(response.users)
         binding.rvReview.adapter = adapter
         adapter.setOnItemClickListener { user ->

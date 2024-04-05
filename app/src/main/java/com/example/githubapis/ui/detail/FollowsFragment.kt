@@ -1,6 +1,5 @@
 package com.example.githubapis.ui.detail
 
-import com.example.githubapis.ui.main.ReviewAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubapis.data.response.User
 import com.example.githubapis.databinding.FragmentFollowsBinding
+import com.example.githubapis.ui.main.UserAdapter
 
 class FollowsFragment : Fragment() {
 
@@ -67,13 +67,13 @@ class FollowsFragment : Fragment() {
     }
 
     private fun setFollowersData(response: List<User>) {
-        val adapter = ReviewAdapter()
+        val adapter = UserAdapter()
         adapter.submitList(response)
         binding.rvFollows.adapter = adapter
     }
 
     private fun setFollowingData(response: List<User>) {
-        val adapter = ReviewAdapter()
+        val adapter = UserAdapter()
         adapter.submitList(response)
         binding.rvFollows.adapter = adapter
     }

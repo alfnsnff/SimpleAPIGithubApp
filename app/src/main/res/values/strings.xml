@@ -1,12 +1,8 @@
 <resources>
     <string name="app_name">GithubAPIS</string>
     <string name="searchbar_hint">Masukkan kata</string>
-    <string name="name">Name</string>
-    <string name="username">username</string>
-    <string name="count_follower">Follower</string>
     <string name="tab_text_1">Follower</string>
     <string name="tab_text_2">Following</string>
-    <string name="content_tab_text">This is Tab %1$d</string>
     <string name="toadd">Add</string>
     <string name="fav">favorite\n</string>
     <string name="setting">Settings\n</string>

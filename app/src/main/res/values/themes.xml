@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.GithubAPIS" parent="Theme.Material3.DayNight">
+    <style name="Theme.GithubAPIS" parent="Theme.Material3.DayNight">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -33,43 +33,27 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="TextContent.HeadlineMedium">
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:textAppearance">@style/TextAppearance.Material3.HeadlineMedium</item>
     </style>
-    <style name="TextContent.HeadlineMedium.Bold">
-        <item name="android:textStyle">bold</item>
-    </style>
+
     <style name="TextContent.TitleMedium">
         <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
     </style>
+
     <style name="TextContent.TitleMedium.Bold">
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="TextContent.TitleMedium.Bold.MarginLeftRight">
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-    </style>
-    <style name="TextContent.BodyMedium">
-        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyMedium</item>
-    </style>
-    <style name="TextContent.BodyMedium.MarginLeftRight">
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-    </style>
-    <style name="TextContent.BodyMedium.White">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-    <style name="TextContent.BodyMedium.White.MarginAll">
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginBottom">16dp</item>
-    </style>
-    <style name="TextContent.BodyMedium.Bold">
-        <item name="android:textStyle">bold</item>
-    </style>
 
-    <style name="Theme.GithubAPIS" parent="Base.Theme.GithubAPIS" />
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/md_theme_light_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/baseline_card_giftcard_24</item>
+        <!-- Set the theme of the Activity that directly follows your splash screen. -->
+        <!-- Required -->
+        <item name="postSplashScreenTheme">@style/Theme.GithubAPIS</item>
+
+    </style>
 </resources>

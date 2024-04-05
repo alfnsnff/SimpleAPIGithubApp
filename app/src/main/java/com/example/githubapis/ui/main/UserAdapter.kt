@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.githubapis.data.response.User
 import com.example.githubapis.databinding.ItemReviewBinding
 
-class ReviewAdapter : ListAdapter<User, ReviewAdapter.UserListHolder>(DIFF_CALLBACK) {
+class UserAdapter : ListAdapter<User, UserAdapter.UserListHolder>(DIFF_CALLBACK) {
 
     private var listener: ((User) -> Unit)? = null
 
